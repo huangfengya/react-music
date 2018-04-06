@@ -1,0 +1,44 @@
+header {
+  height: 6vh;
+  text-align: center;
+  h1 {
+    font-size: 24px;
+    line-height: 6vh;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-linear-gradient(left, #3498db, #f47920 10%, #d71345 20%, #f7acbc 30%, #ffd400 40%, #3498db 50%, #f47920 60%, #d71345 70%, #f7acbc 80%, #ffd400 90%, #3498db);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: text-position 2s linear infinite;
+  }
+}
+@keyframes text-position {
+  form {background-position: 0 0;}
+  to {background-position: -100% -100%;}
+}
+
+.nav {
+  display: flex;
+  a {
+    flex: 1;
+    line-height: 5vh;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    color: #fff;
+    background: rgba(0, 0, 0, .3);
+    &:last-child {
+      border: none;
+    }
+    &.active-nav {
+      color: #ff366d;
+    }
+  }
+}
+
+.home, .search, .rank, .singer {
+  position: relative;
+  width: 100%;
+  height: 89vh;
+  overflow: hidden;
+}
