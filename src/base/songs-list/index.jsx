@@ -16,8 +16,8 @@ export default class SongsList extends Component {
     }
   }
 
-  playSongs(e) {
-    
+  playSongs(res) {
+    console.log(res)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,14 +27,18 @@ export default class SongsList extends Component {
   }
 
   render() {
-    let songs = this.state.songsList.map((item, idx)=> {
+    let songs = this.state.songsList.map((item, idx) => {
+
       return (
-        <div className="song-item" onClick={this.playSongs.bind(this)} key={idx}>{item.filename}</div>
+        <div className="song-item" onClick={this.playSongs.bind(this, {
+          hash: item.hash,
+          filename: item.filename
+        })} key={idx}>{item.filename}</div>
       )
     })
 
     return (
-      <div className="scroll" style={{height: '66vh'}}>
+      <div className="scroll" style={{ height: '66vh' }}>
         <ReactIScroll className="iscroll" iScroll={iScroll} onScrollEnd={this.onScrollEnd} options={this.state.options}>
           <div>
             {songs}

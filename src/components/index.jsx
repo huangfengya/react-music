@@ -3,6 +3,7 @@ import { BrowserRouter as Router, NavLink } from "react-router-dom"
 
 import './index.less'
 import RouterMap from '../router/'
+import Player from './player/'
 
 export default class RouterMapIndex extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class RouterMapIndex extends Component {
             <NavLink activeClassName="active-nav" to="/search">搜索</NavLink>
             <NavLink activeClassName="active-nav" to="/singer">歌手</NavLink>
           </div>
+          <Player />
           <RouterMap />
         </div>
       </Router>
