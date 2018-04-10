@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import ReactIScroll from 'react-iscroll'
 import iScroll from 'iscroll/build/iscroll-probe'
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as Actions from '../../actions/song'
 
 import './index.less'
 
-export default class SongsList extends Component {
+class SongsList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -18,6 +21,9 @@ export default class SongsList extends Component {
 
   playSongs(res) {
     console.log(res)
+    this.props.userInfoActions.songFilename(res.hash)
+    this.props.userInfoActions.songHash(res.hash)
+    console.log(this.props)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,3 +54,22 @@ export default class SongsList extends Component {
     )
   }
 }
+
+
+// redux
+function mapStateToProps(state) {
+  return {
+    songinfo: state.song,
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userInfoActions: bindActionCreators(Actions, dispatch)
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SongsList)
