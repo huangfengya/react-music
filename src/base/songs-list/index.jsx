@@ -3,7 +3,8 @@ import ReactIScroll from 'react-iscroll'
 import iScroll from 'iscroll/build/iscroll-probe'
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import * as Actions from '../../actions/song'
+import * as ActionsA from '../../actions/song'
+import * as ActionsB from '../../actions/player'
 
 import './index.less'
 
@@ -21,8 +22,8 @@ class SongsList extends Component {
 
   playSongs(res) {
     // console.log(res)
-    this.props.userInfoActions.songInfo(res)
-    console.log(this.props)
+    this.props.songInfo(res)
+    this.props.playerDisplay(true)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,7 +34,6 @@ class SongsList extends Component {
 
   render() {
     let songs = this.state.songsList.map((item, idx) => {
-
       return (
         <div className="song-item" onClick={this.playSongs.bind(this, {
           hash: item.hash,
@@ -64,7 +64,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userInfoActions: bindActionCreators(Actions, dispatch)
+    ...bindActionCreators(ActionsA, dispatch),
+    ...bindActionCreators(ActionsB, dispatch)
   }
 }
 
