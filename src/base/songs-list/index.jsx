@@ -20,9 +20,8 @@ class SongsList extends Component {
   }
 
   playSongs(res) {
-    console.log(res)
-    this.props.userInfoActions.songFilename(res.hash)
-    this.props.userInfoActions.songHash(res.hash)
+    // console.log(res)
+    this.props.userInfoActions.songInfo(res)
     console.log(this.props)
   }
 

@@ -1,15 +1,8 @@
 import * as actionTypes from "../constants/song"
 
-export function songFilename(data) {
+export function songInfo(data) {
   return {
-    type: actionTypes.SONG_FILENAME,
-    data
-  }
-}
-
-export function songHash(data) {
-  return {
-    type: actionTypes.SONG_HASH,
+    type: actionTypes.SONG_INFO,
     data
   }
 }
